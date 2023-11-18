@@ -28,3 +28,32 @@ import HelloWorld from './components/HelloWorld.vue'
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
+
+<!-- 
+<template>
+  <div class="home">home</div>
+  <AppBar title="TODO" left=bars right=search />
+  <Avatar></Avatar>
+</template>
+
+<script>
+import AppBar from '../src/components/AppBar.vue'
+import Avatar from '../src/components/Avatar.vue'
+export default {
+  name: Home,
+  components: {
+      AppBar,
+      Avatar
+  }
+}
+</script>
+
+<style>
+.home {
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  overflow: hidden;
+}
+
+</style> -->
