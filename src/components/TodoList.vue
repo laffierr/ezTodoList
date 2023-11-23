@@ -30,7 +30,7 @@ export default {
         ...mapState(['todos','currentIndex','selected'])
     },
     methods: {
-        ...mapMutations(['selevtTodo','nextTodo','prevTodo'])
+        ...mapMutations(['selectTodo','nextTodo','prevTodo'])
     },
 }
 </script>
