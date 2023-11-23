@@ -1,16 +1,13 @@
 import { createApp } from 'vue'
 import './style.css'
-import store from './store/index.js';
-import router from './router/index.js';
-
-import App from './App.vue'
+import '@fortawesome/fontawesome-free/css/all.css';
+import store from './store.js';
+import router from './router.js';
 import Home from './views/home.vue'
+const app = createApp(Home);
 
-const app = createApp(App);
-const home = createApp(Home);
+app.use(router);
+app.use(store);
+// console.log(store.state.todos);
 
-home.use(router);
-home.use(store);
-// app.mount('#app');
-home.mount('#app');
-
+app.mount('#app');
