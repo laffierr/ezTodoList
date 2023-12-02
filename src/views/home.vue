@@ -4,6 +4,7 @@
         <Avatar />
         <Gradient />
         <TodoList />
+        <TodoDetail/>
     </div>
 
 </template>
