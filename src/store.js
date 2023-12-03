@@ -69,7 +69,7 @@ const store = createStore ({
     mutations: {
         // 用于修改状态的方法 接收state作为第一个参数 同步
         selectTodo (state, selected) {
-            state.unset = null
+            state.unselect = null
             state.selected = selected
         },
         unselectTodo (state) {
