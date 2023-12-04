@@ -67,6 +67,7 @@
             color() {
                 return this.todo.colors[0];
             },
+            // 进度计算函数
             progress() {
                 const totalCount = this.todo.tasks.filter(t => !t.deleted).length
                 const doneCount = this.todo.tasks.filter(t => !t.deleted && t.done).length
