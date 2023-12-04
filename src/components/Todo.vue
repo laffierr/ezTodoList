@@ -1,6 +1,5 @@
 <template>
-    <div class="todo"
-    :class="{todo__selected: selected }">
+    <div class="todo" :class="{todo__selected: selected }">
         <div class="todo_head" @click="handleClick">
             <div class="todo_icon" :style="{color}">
                 <i :class="['fa',`fa-${todo.icon}`]"></i>
@@ -14,41 +13,41 @@
             <h3 class="todo_title"> {{ todo.name }}</h3>
             <div class="todo_progress">
                 <span class="todo_progress_line">
-                    <i :style="{ width: progress, backgroundImage:progressColor}"></i>
+                    <i :style="{ width: progress, backgroundImage:`url(${progressColor})`}"></i>
                 </span>
                 <span class="todo_progress_num">{{ progress }}</span>
             </div>
-
+            <div class="todo_tasks">
+                <h4 class="todo_subtitle" v-if="todayTasks.length">Today</h4>
+                <ul>
+                    <li v-for="task in todayTasks"
+                    :key="task.id">
+                    <task :task="task"/>
+                    </li>
+                </ul>
+                <h4 class="todo_subtitle" v-if="tomorrowTasks.length">Tomorrow</h4>
+                <ul>
+                    <li v-for="task in tomorrowTasks"
+                    :key="task.id">
+                    <task :task="task"/>
+                    </li>
+                </ul>
+                <h4 class="todo_subtitle" v-if="outdatedTasks.length">Outdated</h4>
+                <ul>
+                    <li v-for="task in outdatedTasks"
+                    :key="task.id">
+                    <task :task="task"/>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="todo_tasks">
-            <h4 class="todo_subtitle" v-if="todayTasks.length">Today</h4>
-            <ul>
-                <li v-for="task in todayTasks"
-                :key="task.id">
-                <task :task="task"/>
-                </li>
-            </ul>
-            <h4 class="todo_subtitle" v-if="tomorrowTasks.length">Tomorrow</h4>
-            <ul>
-                <li v-for="task in tomorrowTasks"
-                :key="task.id">
-                <task :task="task"/>
-                </li>
-            </ul>
-            <h4 class="todo_subtitle" v-if="outdatedTasks.length">Outdated</h4>
-            <ul>
-                <li v-for="task in outdatedTasks"
-                :key="task.id">
-                <task :task="task"/>
-                </li>
-            </ul>
-        </div>
+        
     </div>
 
 </template>
 
 <script>
-    import Task from './task.vue';
+    import Task from './Task.vue';
     import { today, tomorrow} from '../shared.js';
     export default{
         components: {
@@ -74,9 +73,11 @@
                 return `${Math.round((doneCount / totalCount) * 100)}%`
             },
             progressColor() {
-                const colorBottom = `color-stop(30%, ${this.todo.colors[0]})`
-                const colorTop = `to(${this.todo.colors[1]})`
-                return `-webkit-CanvasGradient(liner, left bottom, right bottom, ${colorBottom}, ${colorTop})`
+                const colorLeft = `color-stop(30%, ${this.todo.colors[0]})`
+                const colorRight = `to(${this.todo.colors[1]})`
+                console.log(`-webkit-linear-gradient(left bottom, right bottom, ${colorLeft}, ${colorRight})`);
+                return `-webkit-gradient(liner, left bottom, right bottom, ${colorLeft}, ${colorRight})`
+                // return `-webkit-linear-gradient(left bottom, right bottom, ${colorLeft}, ${colorRight})`
             },
             todayTasks() {
                 return this.todo.tasks.filter(task => {

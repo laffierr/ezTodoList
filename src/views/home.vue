@@ -1,9 +1,10 @@
 <template>
     <div class="home">
-        <AppBar title="TODO" left=bars right=search />
-        <Avatar />
-        <Gradient />
-        <TodoList />
+        <app-bar title="TODO" left=bars right=search />
+        <avatar />
+        <gradient />
+        <todo-list />
+        <todo-detail />
     </div>
 
 </template>
