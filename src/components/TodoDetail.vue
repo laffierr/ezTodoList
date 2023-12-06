@@ -40,19 +40,20 @@
         }, 0);
       },
       handleLeave(el) {
+        console.log('leave');
         Object.assign(el.style, {
           top: 0,
           left: 0,
-          width: `${this.ubselect.rect.appWidth}px`,
-          height: `${this.ubselect.rect.appHeight}px`
+          width: `${this.unselect.rect.appWidth}px`,
+          height: `${this.unselect.rect.appHeight}px`
         })
 
         setTimeout(() => {
           Object.assign(el.style, {
-            top: `${this.ubselect.rect.top}px`,
-            left: `${this.ubselect.rect.left}px`,
-            width: `${this.ubselect.rect.width}px`,
-            height: `${this.ubselect.rect.height}px`,
+            top: `${this.unselect.rect.top}px`,
+            left: `${this.unselect.rect.left}px`,
+            width: `${this.unselect.rect.width}px`,
+            height: `${this.unselect.rect.height}px`,
           })
         });
       }

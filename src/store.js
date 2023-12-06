@@ -63,6 +63,9 @@ const store = createStore ({
                     colors: ['#2c7d59', '#3ba776']
                 },
             ],
+            selected: null,
+            unselect: null,
+            editing: null
         }
         // 用于储存应用程序级别的状态
     },

@@ -4,7 +4,7 @@
             <input type="checkbox" :id="id" v-model="task.done" />
             <label for="id"> {{ task.title }}</label>
             <transition name="fade">
-                <span class="task_delete" v-show="task.done" @click="deleteTesk">
+                <span class="task_delete" v-show="task.done" @click="deleteTesk({task})">
                     <i class="fa fa-trash"></i>
                 </span>
             </transition>

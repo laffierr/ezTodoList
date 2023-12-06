@@ -13,7 +13,7 @@
             <h3 class="todo_title"> {{ todo.name }}</h3>
             <div class="todo_progress">
                 <span class="todo_progress_line">
-                    <i :style="{ width: progress, backgroundImage:`url(${progressColor})`}"></i>
+                    <i :style="{ width: progress, backgroundImage: progressColor } "></i>
                 </span>
                 <span class="todo_progress_num">{{ progress }}</span>
             </div>
@@ -22,21 +22,21 @@
                 <ul>
                     <li v-for="task in todayTasks"
                     :key="task.id">
-                    <task :task="task"/>
+                        <task :todo = 'todo' :task="task"/>
                     </li>
                 </ul>
                 <h4 class="todo_subtitle" v-if="tomorrowTasks.length">Tomorrow</h4>
                 <ul>
                     <li v-for="task in tomorrowTasks"
                     :key="task.id">
-                    <task :task="task"/>
+                        <task :todo='todo' :task="task"/>
                     </li>
                 </ul>
                 <h4 class="todo_subtitle" v-if="outdatedTasks.length">Outdated</h4>
                 <ul>
                     <li v-for="task in outdatedTasks"
                     :key="task.id">
-                    <task :task="task"/>
+                    <task :todo='todo' :task="task"/>
                     </li>
                 </ul>
             </div>
@@ -48,7 +48,7 @@
 
 <script>
     import Task from './Task.vue';
-    import { today, tomorrow} from '../shared.js';
+    import { today, tomorrow } from '../shared.js';
     export default{
         components: {
             Task,
@@ -97,6 +97,8 @@
         },
         methods: {
             handleClick() {
+                console.log('clickcheck');
+
                 const appRect = document.querySelector('#app').getBoundingClientRect()
                 const elRect = this.$el.getBoundingClientRect()
                 const todo = this.todo
@@ -109,6 +111,9 @@
                 rect.appWidth = appRect.width
                 rect.appHeight = appRect.height
 
+                // console.log(rect);
+                // console.log(todo);
+                // 能正确获取位置和todo
                 this.$emit('select', {rect, todo})
             }
         }
