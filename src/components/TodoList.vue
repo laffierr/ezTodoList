@@ -6,7 +6,7 @@
                 :key="todo.name"
                 :style="{transform: `translate3d(-${currentIndex * 100}%, 0,0)`}">
                 <todo
-                    :todo="todo" 
+                    :todo="todo"
                     :selected="selected && selected.todo === todo"
                     @select="selectTodo"/>
             </li>
@@ -52,39 +52,6 @@ export default {
 }
 </script>
 
-<!-- <script>
-    import { ref, onMounted, computed} from 'vue';
-    import { mapState, mapMutations } from 'vuex';
-    import Todo from './Todo.vue';
-
-    export default {
-        components:{
-            Todo,
-        },
-        setup() {
-            let touch = {}
-            const handleTouchStart = (evt) => {
-                touch.value.startX = evt.touches[0].clientX;
-                touch.value.endX = 0;
-            }
-            let handleTouchMove = (evt) => {
-                touch.value.endX = evt.touches[0].clientX;
-            }
-            let handleTouchEnd = (evt) => {
-                if (!touch.value.endX || Math.abs(touch.value.endX - touch.value.startX) < 10) {
-                    return
-                }
-                if (touch.value.endX < touch.value.startX) {
-                    nextTodo()
-                }
-                else {
-                    prevTodo()
-                }
-            }
-        }
-    }
-</script>   -->
-
 <style lang="scss">
     .todo-list {
         padding: 0 32px;
@@ -107,6 +74,7 @@ export default {
     }
     .todo-list__selected {
         transform: scaleX(1.25);
+        // visibility: hidden;
     }
     
 </style>

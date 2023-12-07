@@ -28,6 +28,7 @@
           left: `${this.selected.rect.left}px`,
           width: `${this.selected.rect.width}px`,
           height: `${this.selected.rect.height}px`,
+          borderRadius: '8px',
         })
 
         setTimeout(() => {
@@ -35,7 +36,8 @@
             top: 0,
             left: 0,
             width: `${this.selected.rect.appWidth}px`,
-            height: `${this.selected.rect.appHeight}px`
+            height: `${this.selected.rect.appHeight}px`,
+            borderRadius: '0',
           })
         }, 0);
       },
@@ -67,6 +69,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 0;
+//   border-radius: 8px;
   background-color: #fff;
   color: #666;
   will-change: top,left,width,height;
@@ -88,7 +91,8 @@
 
   .todo_tasks {
     opacity: 1;
-    transform: scaleY(1);
+    transform: scale3d(1,1,1);
+    // transform: scaleY(1);
   }
   .app-bar {
     opacity: 1;
@@ -98,7 +102,8 @@
 
 .show-enter-to,
 .show-leave {
-  border-radius: 0;
+    border-radius: 8px;
+
 
   .todo {
     padding: 0 20px;
@@ -143,9 +148,9 @@
     transform: translate3d(0,-100%,0);
   }
 }
-.show-enter-active
+.show-enter-active,
 .show-leave-active {
-  transition: all .5s ease;
+  transition: all 1s ease;
 
   .todo,
   .todo_head,
@@ -153,7 +158,7 @@
   .todo_menu,
   .todo_tasks,
   .app-bar {
-    transition: all .5s ease;
+    transition: all 1s ease;
   }
 }
 

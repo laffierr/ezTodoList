@@ -89,7 +89,7 @@ const store = createStore ({
                 state.currentIndex--
             }
         },
-        deleteTask (_, {task}) {
+        deleteTask ({task}) {
             task.deleted = true
         },
         toggleEditing (state) {

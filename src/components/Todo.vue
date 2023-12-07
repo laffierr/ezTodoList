@@ -43,7 +43,6 @@
         </div>
         
     </div>
-
 </template>
 
 <script>
@@ -75,7 +74,7 @@
             progressColor() {
                 const colorLeft = `color-stop(30%, ${this.todo.colors[0]})`
                 const colorRight = `to(${this.todo.colors[1]})`
-                console.log(`-webkit-linear-gradient(left bottom, right bottom, ${colorLeft}, ${colorRight})`);
+                // console.log(`-webkit-linear-gradient(left bottom, right bottom, ${colorLeft}, ${colorRight})`);
                 return `-webkit-gradient(liner, left bottom, right bottom, ${colorLeft}, ${colorRight})`
                 // return `-webkit-linear-gradient(left bottom, right bottom, ${colorLeft}, ${colorRight})`
             },
@@ -97,7 +96,7 @@
         },
         methods: {
             handleClick() {
-                console.log('clickcheck');
+                console.log('clicked');
 
                 const appRect = document.querySelector('#app').getBoundingClientRect()
                 const elRect = this.$el.getBoundingClientRect()
@@ -122,15 +121,17 @@
 
 <style lang="scss">
     .todo {
-        // 这个flex跨越了组件，和todoList里的flex对应
+        // 这个flex跨越了组件，和todoList里的flex和todoDetail里的flex对应
         flex: 1;
         margin: 0 8px;
         overflow: hidden;
         box-shadow: 0 10px 10px rgba($color: #fff, $alpha: 0.2);
         color: #666;
     }
+    // 控制当todolist中todo被选择之后隐藏
     .todo__selected {
         visibility: hidden;
+        // z-index: 100;
     }
     .todo_head {
         display: flex;
